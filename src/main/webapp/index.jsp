@@ -1,14 +1,12 @@
 <html>
 <head>
-<title>Welcome to Netflix!</title>
+<title>Welcome to rishabh's arena!</title>
 </head>
 <body>
 	<h1>Please select the following categories!</h1>
-	<h2>1.Drama</h2>
-	<h2>2.Vengful</h2>
-	<h2>3.Horror</h2>
-	<h2>4.Anime</h2>
-	<h2>5.Comedy</h2>
+	<h2>1.press 1 for english</h2>
+	<h2>2.press 2 for hindi</h2>
+	<h2>3.press 3 for kannada</h2>
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>
