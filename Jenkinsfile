@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh 'ls'
                 sh 'mvn package'
-                sh 'sudo scp -R /home/slave/workspace/myfirstpipe/target/hello-world-war-1.0.0.war ubuntu@172.31.1.204:/opt/tomcat/webapps'
+                sh 'scp -R /home/slave/workspace/myfirstpipe/target/hello-world-war-1.0.0.war ubuntu@172.31.1.204:/opt/tomcat/webapps'
             }
         }    
         stage( 'my deploy' ) {
