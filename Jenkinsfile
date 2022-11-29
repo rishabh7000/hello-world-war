@@ -10,7 +10,8 @@ pipeline {
         stage('my deploy') {
         agent {label 'server'} 
             steps {
-                sh 'scp -R /workspace/myfirstpipe/target/hello-world-war-1.0.0.war ubuntu@172.31.1.204:/workspace/myfirstpipe'
+                sh 'ssh slave@172.31.3.6'
+                sh 'scp -R /workspace/myfirstpipe/target/hello-world-war-1.0.0.war slave172.31.3.6:/workspace/myfirstpipe/webapps'
             }
         }    
     }
