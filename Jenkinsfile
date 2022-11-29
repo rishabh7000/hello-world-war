@@ -10,7 +10,7 @@ pipeline {
         stage('my deploy') {
         agent {label 'server'} 
             steps {
-                sh 'sudo scp -R /workspace/myfirstpipe/target/hello-world-war-1.0.0.war workspace/tomcat/webapps/'
+                sh 'sudo scp -R /workspace/myfirstpipe/target/hello-world-war-1.0.0.war ubuntu@172-31-1-204:workspace/tomcat/webapps/'
             }
         }    
     }
