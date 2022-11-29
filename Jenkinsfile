@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('my Build') { 
             steps {
-                pwd
+                ls
                 sh 'mvn package'
             }
         }        
