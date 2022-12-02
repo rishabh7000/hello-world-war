@@ -3,6 +3,9 @@ pipeline {
     stages {
         stage('my Build') { 
             steps {
+                dir ("/home/ubuntu/rishabh") {
+                    sh 'touch file1 file2'
+                }
                 sh "echo ${BUILD}"
                 sh 'mvn deploy'
             }
