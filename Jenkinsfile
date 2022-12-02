@@ -12,9 +12,9 @@ pipeline {
             steps {
                sh 'curl -u rishabhfrog@gmail.com:Elvish@321 -O https://rishabhfrog.jfrog.io/artifactory/libs-release-local/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war-${BUILD_NUMBER}.war'
                sh 'cp -R hello-world-war-${BUILD_NUMBER}.war /home/slave/workspace/assignment/tomcat/webapps/' 
-               sh 'sudo sh /workspace/assign/tomcat/bin/shutdown.sh'
+               sh 'sudo sh /workspace/assignment/tomcat/bin/shutdown.sh'
                sh 'sleep 2'
-               sh 'sudo sh /workspace/assign/tomcat/bin/startup.sh' 
+               sh 'sudo sh /workspace/assignment/tomcat/bin/startup.sh' 
             }
         }    
     } 
