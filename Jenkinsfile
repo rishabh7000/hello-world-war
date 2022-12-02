@@ -11,10 +11,10 @@ pipeline {
         agent {label 'slavee'} 
             steps {
                sh 'curl -u rishabhfrog@gmail.com:Elvish@321 -O https://rishabhfrog.jfrog.io/artifactory/libs-release-local/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war-${BUILD_NUMBER}.war'
-               sh 'cp -R hello-world-war-${BUILD_NUMBER}.war /home/slave/workspace/assignment/tomcat/webapps/' 
-               sh 'sudo sh /home/slave/workspace/assignment/tomcat/bin/shutdown.sh'
+               sh 'cp -R hello-world-war-${BUILD_NUMBER}.war /home/slave/workspace/mybuild/tomcat/webapps/' 
+               sh 'sudo sh /home/slave/workspace/mybuild/tomcat/bin/shutdown.sh'
                sh 'sleep 2'
-               sh 'sudo sh /home/slave/workspace/assignment/tomcat/bin/startup.sh' 
+               sh 'sudo sh /home/slave/workspace/mybuild/tomcat/bin/startup.sh' 
             }
         }    
     } 
