@@ -1,20 +1,21 @@
 pipeline {
-    agent {label 'slav'} 
+    agent {label 'slavee'} 
     stages {
         stage('my Build') { 
             steps {
-                sh 'ls'
                 sh "echo ${BUILD_NUMBER}"
-                sh 'mvn package'
-                sh 'scp -R /home/slave/workspace/myfirstpipe/target/hello-world-war-1.0.0.war ubuntu@172.31.1.204:/opt/tomcat/webapps'
+                sh 'mvn deploy'
             }
         }    
         stage( 'my deploy' ) {
-        agent {label 'server'} 
+        agent {label 'service'} 
             steps {
-               sh 'sh /opt/tomcat/bin/shutdown.sh'
-               sh 'sh /opt/tomcat/bin/startup.sh' 
+               sh 'curl -u rishabhfrog@gmail.com:Elvish@321 -O https://rishabhfrog.jfrog.io/artifactory/libs-release-local/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war-${BUILD_NUMBER}.war'
+               sh 'cp -R hello-world-war-${BUILD_NUMBER}.war /opt/tomcat/webapps/' 
+               sh 'sudo sh /opt/tomcat/bin/shutdown.sh'
+               sh 'sleep 2'
+               sh 'sudo sh /opt/tomcat/bin/startup.sh' 
             }
         }    
-    }
+    } 
 }
