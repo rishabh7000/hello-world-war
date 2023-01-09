@@ -1,0 +1,27 @@
+pipeline {
+    agent {label 'sla'}
+    stages {
+        stage('my Build') {
+            steps {
+                sh "echo ${BUILD_VERSION}"
+                sh 'docker build -t tomcat_build:${BUILD_VERSION} -f jenkins_docker_file .'
+            }
+        }  
+        stage('publish stage') {
+            steps {
+                sh "echo ${BUILD_VERSION}"
+                sh 'docker login -u rishabh7000 -p Elvish@321'
+                sh 'docker tag tomcat_build:${BUILD_VERSION} rishabh7000/mytomcat:${BUILD_VERSION}'
+                sh 'docker push rishabh7000/mytomcat:${BUILD_VERSION}'
+            }
+        } 
+        stage( 'my deploy' ) {
+        agent {label 'ansible'} 
+            steps {
+               sh 'docker pull rishabh7000/mytomcat:${BUILD_VERSION}'
+               sh 'docker rm -f mytomcat'
+               sh 'docker run -d -p 8080:8080 --name mytomcat /mytomcat:${BUILD_VERSION}'
+            }
+        }    
+    } 
+}
