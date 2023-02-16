@@ -8,7 +8,7 @@ RUN mvn clean package
 FROM tomcat:9.0
 ARG BUILD_NUMBER=${BUILD_NUMBER}
 ENV BUILD_NUMBER=${BUILD_NUMBER}
-COPY --from=build_stage /rishabh/target/hello-world-war-${BUILD_VERSION}.war /usr/local/tomcat/webapps/
+COPY --from=build_stage /rishabh/target/hello-world-war-${BUILD_NUMBER}.war /usr/local/tomcat/webapps/
 
 
 
