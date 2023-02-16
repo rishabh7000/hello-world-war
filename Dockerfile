@@ -1,5 +1,5 @@
 FROM maven:3.8.2-openjdk-8 as build_stage
-ENV BUILD_NUMBER=${BUILD_NUMBER}
+ENV BUILD_VERSION=${BUILD_VERSION}
 WORKDIR /rishabh
 COPY . .
 RUN mvn clean package
