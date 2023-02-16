@@ -15,14 +15,14 @@ pipeline {
                 sh 'docker tag tomcat_build:${BUILD_NUMBER} rishabh7000/tomcat:${BUILD_NUMBER}'
                 sh 'docker push rishabh7000/tomcat:${BUILD_NUMBER}'
                     
-                sh 'curl -ugoelrishabh58@gmail.com:Firstcry58 -T pack_tomcat-${BUILD_NUMBER}.tgz \"https://rishabh7000.jfrog.io/artifactory/helm/pack_tomcat-${BUILD_NUMBER}.tgz\"'
+                sh 'curl -ugoelrishabh58@gmail.com:Rishabh@1 -T pack_tomcat-${BUILD_NUMBER}.tgz \"https://rishabh7000.jfrog.io/artifactory/helm/pack_tomcat-${BUILD_NUMBER}.tgz\"'
                 }
             }
         } 
         stage( 'my deploy' ) {
         agent {label 'deploy'} 
             steps {
-               sh 'helm repo add helm https://rishabh7000.jfrog.io/artifactory/api/helm/helm --username goelrishabh58@gmail.com --password Firstcry58'
+               sh 'helm repo add helm https://rishabh7000.jfrog.io/artifactory/api/helm/helm --username goelrishabh58@gmail.com --password Rishabh@1'
                sh 'helm repo update'
                sh 'helm repo list'
                sh 'helm upgrade --install mytomcat helm/pack_tomcat --version=${BUILD_NUMBER} --set selector_matchlabels=tomcat --set deployment_name=tomcat --set replicas=2 --set registry_name=rishabh7000 --set docker_repo_name=tomcat --set image_tag=${BUILD_NUMBER} --set port_name=tomcat --set target_port=8080 --set port=8080'
